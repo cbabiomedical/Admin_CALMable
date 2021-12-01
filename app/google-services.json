@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "902712155556",
+    "firebase_url": "https://calmableproject-default-rtdb.firebaseio.com",
+    "project_id": "calmableproject",
+    "storage_bucket": "calmableproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902712155556:android:0a3183aaf2ef9c27c53531",
+        "android_client_info": {
+          "package_name": "com.example.admincalmable"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902712155556-lmfsv32q96ifab8n590995hrl7ofkt6d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8fnnoMlPSdun-YM9pirI3tu2OiH0eX_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902712155556-lmfsv32q96ifab8n590995hrl7ofkt6d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902712155556:android:4bfedb8a1a7b8032c53531",
+        "android_client_info": {
+          "package_name": "com.example.calmable"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902712155556-c4q4afkdg4b1vj3a6rm38g6h1ufgf191.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.calmable",
+            "certificate_hash": "531cf15c5fa58b5477a6ff605b2de83ba4cbc955"
+          }
+        },
+        {
+          "client_id": "902712155556-lmfsv32q96ifab8n590995hrl7ofkt6d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8fnnoMlPSdun-YM9pirI3tu2OiH0eX_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902712155556-lmfsv32q96ifab8n590995hrl7ofkt6d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

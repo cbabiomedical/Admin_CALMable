@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/player_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:weightSum="10"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtsongName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="SongName"
+            android:textSize="28sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/white"
+            android:textAlignment="center"/>
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:id="@+id/imageView"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_baseline_library"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="20dp"
+                android:layout_width="245dp"
+                android:layout_marginBottom="40dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/txtStart"
+                android:layout_toLeftOf="@+id/seekBar"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="false"
+                android:layout_marginLeft="2dp"
+                android:text="0:00"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/txtStop"
+                android:layout_toRightOf="@+id/seekBar"
+                android:layout_centerInParent="true"
+                android:layout_alignParentRight="false"
+                android:layout_marginRight="2dp"
+                android:text="4:00"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:id="@+id/playBtn"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ic_baseline_pause_24"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/fForward"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/playBtn"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/ic_baseline_fast_forward_24"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/fRewind"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@+id/playBtn"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/ic_baseline_fast_rewind_24"/>
+
+            <!--            <com.chibde.visualizer.SquareBarVisualizer-->
+            <!--                android:id="@+id/visualizer"-->
+            <!--                android:layout_alignParentBottom="true"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                app:avColor="@color/white"-->
+            <!--                android:layout_height="110dp" />-->
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

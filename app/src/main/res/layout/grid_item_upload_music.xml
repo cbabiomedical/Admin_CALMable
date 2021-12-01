@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/CardView.Light"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/musicImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/musicTitle"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center|start"
+            android:layout_marginStart="120dp"
+            android:text="Chill Acoustic"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/musicId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:text="id"
+            android:layout_toRightOf="@+id/musicTitle"/>
+
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="41dp"
+            android:layout_toRightOf="@+id/musicId"
+            android:src="@drawable/ic_baseline_delete_24" />
+
+
+        <TextView
+            android:id="@+id/url"
+            android:layout_toRightOf="@+id/musicImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/musicTitle"
+            android:layout_marginTop="50dp"
+            android:textSize="10sp"
+            android:layout_centerHorizontal="true"
+            android:text="url fbdbdjvnsijdvnsjvnsi"/>
+
+        <ImageView
+            android:id="@+id/editMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/delete"
+            android:layout_toEndOf="@+id/musicId"
+            android:src="@drawable/ic_baseline_edit_24" />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

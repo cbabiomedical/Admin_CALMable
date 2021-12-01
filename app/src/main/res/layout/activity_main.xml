@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_1">
+        <!--        <androidx.appcompat.widget.AppCompatButton-->
+        <!--            android:id="@+id/editSgs"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="260dp"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:background="@color/black"-->
+        <!--            android:textSize="16sp"-->
+        <!--            android:paddingHorizontal="20dp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            app:cornerRadius="20dp"-->
+        <!--            android:layout_marginRight="20dp"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:text="Edit Song"/>-->
+
+        <ImageView
+            android:id="@+id/editSgs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_baseline_view_list_24" />
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_toLeftOf="@id/editSgs"
+            android:gravity="center"
+            android:text="View Uploaded Music"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/droidserif_italic"
+            android:text="Upload Music"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/teal_dark"
+            android:textSize="25dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="54dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll1"
+            android:layout_below="@+id/view"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mybutton"
+                android:text="Upload song"
+                android:onClick="openAudioFiles"
+                android:id="@+id/openAudioFiles"
+                android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="No file selected"
+                android:id="@+id/textViewSongsFilesSelected"/>
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+
+            android:id="@+id/ll2"
+            android:layout_below="@+id/ll1"
+            android:orientation="vertical"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mybutton"
+                android:text="Click below to Upload an image"
+                android:textColor="@color/white"
+                />
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                app:srcCompat="@drawable/image"
+                android:id="@+id/songimage"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+
+            android:layout_below="@+id/ll2"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ll31"
+                android:orientation="vertical"
+                android:layout_marginRight="20dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:hint="Enter Id :"
+                    android:textColorHint="@color/black"
+                    android:layout_marginTop="30dp"
+
+                    android:id="@+id/enterid"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:hint="Enter Song Name :"
+                    android:layout_marginTop="30dp"
+                    android:textColorHint="@color/black"
+
+                    android:id="@+id/entername"/>
+                <ProgressBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:id="@+id/progressbar"
+                    android:layout_marginTop="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonUpload"
+
+                    android:background="@drawable/mybutton"
+                    android:text="upload"
+                    android:textColor="@color/white"
+                    android:onClick="uploadFileTofirebase"
+                    android:layout_below="@+id/entername"
+                    android:layout_marginTop="30dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonNotify"
+
+                    android:background="@drawable/mybutton"
+                    android:text="Notify Users"
+                    android:textColor="@color/white"
+                    android:onClick="uploadFileTofirebase"
+                    android:layout_below="@+id/entername"
+                    android:layout_marginTop="30dp"/>
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+</ScrollView>
