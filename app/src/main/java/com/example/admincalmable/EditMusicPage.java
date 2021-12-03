@@ -26,6 +26,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.admincalmable.MainActivity;
 import com.example.admincalmable.Model.UploadSong;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -164,7 +165,11 @@ public class EditMusicPage extends AppCompatActivity {
 //                    public void run() {
 //
 //
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Songs_Admin");
+//                Intent intent = getIntent();
+//                String selected_name = intent.getExtras().getString("selected_name");
+                Log.d("selected_name------Edit",MainActivity.selected_name);
+
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Songs_Admin").child(MainActivity.selected_name);
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -277,6 +282,7 @@ public class EditMusicPage extends AppCompatActivity {
                     }
                 }
             });
+
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),

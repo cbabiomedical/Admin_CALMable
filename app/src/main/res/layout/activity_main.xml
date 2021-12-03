@@ -38,13 +38,13 @@
             android:src="@drawable/ic_baseline_view_list_24" />
 
         <TextView
-            android:layout_width="180dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_toLeftOf="@id/editSgs"
             android:gravity="center"
-            android:text="View Uploaded Music"
-            android:textStyle="bold"/>
+            android:text="View Uploaded Music in the category"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/view"
@@ -62,33 +62,53 @@
             tools:layout_editor_absoluteX="54dp"/>
 
         <LinearLayout
+            android:id="@+id/ll1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ll1"
             android:layout_below="@+id/view"
-            android:layout_marginTop="50dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_toLeftOf="@id/editSgs"
+                android:gravity="center"
+                android:text="Select a Music Ctegory to continue"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown" />
+
+
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/openAudioFiles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/mybutton"
-                android:text="Upload song"
                 android:onClick="openAudioFiles"
-                android:id="@+id/openAudioFiles"
-                android:textColor="@color/white"/>
+                android:text="Upload song"
+                android:textColor="@color/white" />
+
             <TextView
+                android:id="@+id/textViewSongsFilesSelected"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="No file selected"
-                android:id="@+id/textViewSongsFilesSelected"/>
-
-
+                android:text="No file selected" />
 
 
         </LinearLayout>

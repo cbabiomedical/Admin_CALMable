@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.util.Log;
 
 //import com.example.admincalmable.Model.UploadMeditate;
+import com.example.admincalmable.MainActivity;
 import com.example.admincalmable.Model.UploadSong;
 import com.example.admincalmable.adapter.MusicAdapter;
 import com.google.firebase.database.DataSnapshot;
@@ -36,16 +37,17 @@ public class DisplayUploadedSongs extends AppCompatActivity implements MusicAdap
         recyclerView = findViewById(R.id.recyclerView);
 
         initData();
-
     }
-
-
 
     private void initData() {
         uploadedSongs = new ArrayList<>();
 
-        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Songs_Admin");
-        Log.d("Display Path",reference.getKey());
+        Intent intent = getIntent();
+        String selected_name = intent.getExtras().getString("selected_name");
+        Log.d("selected_name------Dis",selected_name);
+
+        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Songs_Admin").child(selected_name);
+        Log.d("Display Path",reference.child(selected_name).getKey());
         reference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -55,8 +57,6 @@ public class DisplayUploadedSongs extends AppCompatActivity implements MusicAdap
                     uploadedSongs.add(post);
                 }
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
-
 
             }
 
@@ -69,6 +69,7 @@ public class DisplayUploadedSongs extends AppCompatActivity implements MusicAdap
 
         musicAdapter = new MusicAdapter(getApplicationContext(),uploadedSongs,this::onNoteClick);
         recyclerView.setAdapter(musicAdapter);
+
     }
 
 

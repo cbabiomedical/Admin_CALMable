@@ -97,13 +97,23 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/songUrl"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="Please wait : file is uploading..."
+            android:textStyle="bold" />
+
         <ProgressBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:id="@+id/progressbar"
             android:layout_below="@+id/songUrl"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="30dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/updateSong"
@@ -111,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/progressbar"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/mybutton"
             android:text="Update"

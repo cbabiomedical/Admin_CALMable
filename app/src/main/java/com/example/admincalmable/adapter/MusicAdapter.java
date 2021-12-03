@@ -16,14 +16,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-//import com.example.admincalmable.EditMeditation;
+import com.example.admincalmable.MainActivity;
+import com.example.admincalmable.Model.UploadSong;
 import com.example.admincalmable.EditMusicPage;
 import com.example.admincalmable.Model.UploadSong;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -35,6 +39,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
     private ArrayList<UploadSong> uploadedSongs;
     private OnNoteListner onNoteListner;
     DatabaseReference reference1;
+    String category;
 
 
     public MusicAdapter(Context context, ArrayList<UploadSong> uploadedSongs,OnNoteListner onNoteListner) {
@@ -48,7 +53,6 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_item_upload_music,parent,false);
         return new ViewHolder(view,onNoteListner);
-
     }
 
     @Override
@@ -60,7 +64,7 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Songs_Admin");
+                DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("Songs_Admin").child(MainActivity.selected_name);
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -69,10 +73,23 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ViewHolder> 
                             if(post.getId().equals(uploadedSongs.get(position).getId())){
                                 reference1 = databaseReference.child(dataSnapshot.getRef().getKey());
                                 Log.d("ReferencePath", String.valueOf(reference1));
+                                Log.d("selected_name------Adap",MainActivity.selected_name);
                                 reference1.removeValue();
                                 notifyItemRemoved(position);
+                                deleteStorage();
                             }
                         }
+                    }
+
+                    private void deleteStorage() {
+                        StorageReference storageReferencea = FirebaseStorage.getInstance().getReference();
+                        StorageReference storageReference = storageReferencea.child("Songs/" + holder.songTitle.getText().toString());
+                        storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Log.d("TAG------", "onSuccess: deleted file");
+                            }
+                        });
                     }
 
                     @Override

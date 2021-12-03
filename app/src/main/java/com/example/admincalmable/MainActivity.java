@@ -13,10 +13,12 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,8 +40,11 @@ import com.android.volley.toolbox.Volley;
 import com.example.admincalmable.Model.UploadSong;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -51,7 +56,9 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -71,12 +78,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     String songsCategory;
     Uri imageUrl;
     MediaMetadataRetriever metadataRetriever;
+    FirebaseDatabase database;
+    public static String selected_name;
+    private String url;
     byte []art;
     String title1,artist1,album_art1 = "",duration1;
     TextView title,artist,durations,album,dataa;
     ImageView songimage;
     Button uploadBtn,showAllBtn;
-    EditText Enterid,EnterName;
+    EditText Enterid;
+    public static EditText EnterName;
     AppCompatButton buttonNotify;
 //    private DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("Songs");
 //    private StorageReference reference = FirebaseStorage.getInstance().getReference().child("Songs");
@@ -105,22 +116,70 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         metadataRetriever = new MediaMetadataRetriever();
         referenceSongs = FirebaseDatabase.getInstance().getReference().child("Songs_Admin");
+
         mStorageref= FirebaseStorage.getInstance().getReference().child("Songs_Admin");
 
-//        Spinner spinner = findViewById(R.gameId.spinner);
-//
-//        spinner.setOnItemSelectedListener(this);
-//
-//        List<String> catrgories = new ArrayList<>();
-//
-//        catrgories.add("Love songs");
-//        catrgories.add("Sad songs");
-//        catrgories.add("Party songs");
-//        catrgories.add("Birthday songs");
-//        catrgories.add("God songs");
-//
-//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,catrgories);
-//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinner = findViewById(R.id.spinner1);
+
+        spinner.setOnItemSelectedListener(this);
+
+        List<String> categories = new ArrayList<>();
+        ArrayList<String> songUrl = new ArrayList<>();
+
+//        categories.add("Deep Relax");
+//        categories.add("Nature Sound");
+//        categories.add("Chill Out");
+//        categories.add("Healing Music");
+//        categories.add("Sound Scape");
+//        categories.add("Sleep Stories");
+//        categories.add("Instrumental Music");
+//        categories.add("Love Music");
+//        categories.add("Self Improvement");
+//        categories.add("Meditate Music");
+//        categories.add("Creativity");
+
+        database = FirebaseDatabase.getInstance();
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,categories);
+        DatabaseReference reference = database.getReference("Songs_Admin");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                categories.clear();
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    categories.add(snapshot1.getKey().toString());
+                    songUrl.add(snapshot1.getValue().toString());
+
+                }
+                Log.i("TAG", categories + "");
+                Log.i("TAG", songUrl + "");
+
+                spinner.setAdapter(dataAdapter);
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                selected_name = adapterView.getItemAtPosition(i).toString();
+                Log.d("selected name-----",selected_name);
+                url = songUrl.get(i);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        //        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        spinner.setAdapter(dataAdapter);
 
 
@@ -137,7 +196,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         editSong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), DisplayUploadedSongs.class));
+                //startActivity(new Intent(getApplicationContext(), DisplayUploadedSongs.class));
+                Intent myIntent = new Intent(MainActivity.this, DisplayUploadedSongs.class);
+                myIntent.putExtra("selected_name", selected_name);
+                startActivity(myIntent);
             }
         });
 
@@ -238,11 +300,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
             });
 
-
+    //get selected item from spinner
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         songsCategory = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(this,"Selected"+songsCategory, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Selected "+songsCategory, Toast.LENGTH_SHORT).show();
 
 
 
@@ -386,9 +448,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                             UploadSong uploadSong = new UploadSong(uri.toString(),imageUrl.toString(),Enterid.getText().toString(),EnterName.getText().toString());
                             Log.d("ImagewUrl",imageUrl.toString());
-                            String uploadId= referenceSongs.push().getKey();
+                            String uploadId= referenceSongs.child(selected_name).push().getKey();
                             Log.d("UploadId",referenceSongs.push().getKey());
-                            referenceSongs.child(uploadId).setValue(uploadSong);
+                            referenceSongs.child(selected_name).child(uploadId).setValue(uploadSong);
 
 
 
