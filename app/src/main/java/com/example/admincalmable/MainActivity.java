@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         mStorageref= FirebaseStorage.getInstance().getReference().child("Songs_Admin");
 
+        //initialize the spinner
         Spinner spinner = findViewById(R.id.spinner1);
 
         spinner.setOnItemSelectedListener(this);
@@ -138,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 //        categories.add("Meditate Music");
 //        categories.add("Creativity");
 
+        //get music categories from firebase
         database = FirebaseDatabase.getInstance();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,categories);
         DatabaseReference reference = database.getReference("Songs_Admin");
@@ -256,9 +258,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 public Map<String,String> getHeaders()throws AuthFailureError {
                     Map<String,String> header = new HashMap<>();
                     header.put("content-type","application/json");
-                    header.
-                            put("authorization",
-                                    "key=AAAAYTGeHmQ:APA91bGcM2zXzcA0hv5ssW8kE4BTBmlsK5uhHz6UQm2Ur8vuqUoZDErFKUvX7m_-S9m7cmIe5picpG79jk4z1UfB4YuZ3shx1fpEAmh0YzA4L1x85pOlgfNP4bPorTE70ORGqbXdemLq");
+                    header.put("authorization", "key=AAAA0i3WXaQ:APA91bEO4QTUoHjZi1mLIRERhYmaE_ZG-_I1hI0bwjtG22s25NMJVPkNh52HZUTQvwT_Fx4bjDP-1tXqX9GZIZKRfWJdvFe49S1M54EATyU-GJxeKqU7FLcy_a_SLVW4hPA_atsTe9q7");
                     return header;
                 }
             };
