@@ -37,7 +37,7 @@
             android:layout_width="300dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="260dp"
+            android:layout_marginTop="400dp"
             android:background="@drawable/mybutton"
             android:onClick="gotoMain"
             android:paddingHorizontal="50dp"
@@ -67,24 +67,24 @@
 
 <!--            ></androidx.appcompat.widget.AppCompatButton>-->
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/game"
-            android:layout_width="300dp"
-            android:layout_height="80dp"
-            android:layout_below="@+id/already"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/mybutton"
-            android:onClick="gotogame"
-            android:paddingHorizontal="50dp"
-            android:text="Games"
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/game"-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:layout_below="@+id/already"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:background="@drawable/mybutton"-->
+<!--            android:onClick="gotogame"-->
+<!--            android:paddingHorizontal="50dp"-->
+<!--            android:text="Games"-->
 
-            android:textColor="@color/white"
-            android:textSize="20sp"
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="20sp"-->
 
-            app:cornerRadius="20dp"
+<!--            app:cornerRadius="20dp"-->
 
-            ></androidx.appcompat.widget.AppCompatButton>
+<!--            ></androidx.appcompat.widget.AppCompatButton>-->
 
 <!--        <ImageView-->
 <!--            android:layout_width="50dp"-->
@@ -99,7 +99,7 @@
             android:id="@+id/logout"
             android:layout_width="266dp"
             android:layout_height="55dp"
-            android:layout_below="@id/game"
+            android:layout_below="@id/already"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
             android:layout_marginBottom="16dp"
